@@ -9,11 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@badrap/bar-of-progress": "^0.2.2",
     "@heroicons/react": "^1.0.6",
+    "date-fns": "^2.29.3",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
     "next": "13.2.4",
     "react": "18.2.0",
+    "react-date-range": "^1.4.0",
     "react-dom": "18.2.0",
     "tailwind-scrollbar-hide": "^1.1.7"
   },
