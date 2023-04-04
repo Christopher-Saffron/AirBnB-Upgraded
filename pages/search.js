@@ -5,6 +5,7 @@ import React from 'react'
 import { format } from 'date-fns'
 import { getSearchResults } from '@/lib/getSearchResults'
 import InfoCard from '@/components/InfoCard'
+import MapComponent from '@/components/Map'
 
 function Search({searchResults}) {
     const router = useRouter()
@@ -37,6 +38,10 @@ function Search({searchResults}) {
                         <InfoCard img={img} location={location} title={title} description={description} star={star} price={price} key={i} />
                     ))}
                 </div>
+            </section>
+
+            <section className='hidden xl:inline-flex xl:min-w-[600px]' >
+                <MapComponent />
             </section>
         </main>
 
