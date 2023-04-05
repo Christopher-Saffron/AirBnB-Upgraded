@@ -19,7 +19,7 @@ function Search({searchResults}) {
     <div>
         <Header  placeholder={`${location} | ${range} | ${guestNumber} guests`}  />
 
-        <main className='flex'>
+        <main className='flex max-w-screen-2xl  mx-auto'>
             <section className='flex-grow pt-14 px-6'>
                 <p className='text-xs'>300+ Stays for {guestNumber} number od guests</p>
 
@@ -40,8 +40,10 @@ function Search({searchResults}) {
                 </div>
             </section>
 
-            <section className='hidden xl:inline-flex xl:min-w-[600px]' >
-                <MapComponent />
+            <section className='relative hidden xl:inline-flex max-w-[100%] w-full ' >
+                <div className='border border-red-500  relative w-full top-32 h-1/2'>
+                    <MapComponent searchResults={searchResults} />
+                </div>
             </section>
         </main>
 
