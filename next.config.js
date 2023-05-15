@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   images: {
-    domains: ['upload.wikimedia.org'],
+    domains: ['upload.wikimedia.org', 'randomuser.me', 'robohash.org', 'loremflickr.com', 'avatars.githubusercontent.com', 'cloudflare-ipfs.com'],
   },
 }
 
