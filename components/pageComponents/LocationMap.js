@@ -24,7 +24,7 @@ function LocationMap({coords}) {
     }, [])
     
     return (
-      <div className=' py-5 border-t border-gray-300 '>
+      <div className=' py-5 border-t border-gray-300 px-5'>
         <p className='text-xl font-semibold pb-5 px-3 text-gray-700'>Where You'll be staying</p>
 
         <div className='w-full h-96'>

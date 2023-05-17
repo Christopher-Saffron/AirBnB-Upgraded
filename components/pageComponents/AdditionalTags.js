@@ -25,7 +25,7 @@ function AdditionalTags({flex, num}) {
         <>
             {num.map((tag,i) => {
                 return (
-                        <div key={i} className='flex text-sm flex-grow w-full gap-3 justify-center items-center border border-gray-300 rounded-xl px-4 py-4'>
+                        <div key={i} className='flex text-sm flex-grow w-full gap-3 justify-center items-center border border-gray-300 rounded-xl px-2 py-2 md:py-4 md:px-4'>
                             <div className='relative h-6 w-6'>
                                 <Image src={TAGS[tag].icon} alt='' fill className='object-contain' />
                             </div>

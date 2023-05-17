@@ -3,7 +3,7 @@ import React from 'react'
 function FooterPage() {
   return (
     <div className='border-t border-gray-300 mt-5 bg-gray-50 text-gray-800 '>
-        <div className='max-w-screen-xl mx-auto grid grid-cols-4 py-5'>
+        <div className='max-w-screen-xl mx-auto grid text-center lg:text-left px-5 lg:px-0 grid-cols-2 gap-y-6  lg:grid-cols-4 py-5'>
             <div className='flex flex-col gap-1 cursor-pointer'>
                 <p className='mb-1 font-semibold'>Support</p>
                 <p>Help Center</p>

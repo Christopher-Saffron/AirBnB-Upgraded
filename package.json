@@ -11,19 +11,24 @@
   "dependencies": {
     "@badrap/bar-of-progress": "^0.2.2",
     "@heroicons/react": "^1.0.6",
+    "@react-three/fiber": "^8.13.0",
+    "@tailwindcss/line-clamp": "^0.4.4",
     "date-fns": "^2.29.3",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
     "geolib": "^3.3.3",
     "mapbox-gl": "^2.13.0",
     "next": "13.2.4",
+    "next-auth": "^4.22.1",
     "react": "18.2.0",
     "react-date-range": "^1.4.0",
     "react-dom": "18.2.0",
     "react-image-lightbox": "^5.1.4",
     "react-map-gl": "^7.0.21",
     "react-responsive-carousel": "^3.2.23",
-    "tailwind-scrollbar-hide": "^1.1.7"
+    "react-three-fiber": "^6.0.13",
+    "tailwind-scrollbar-hide": "^1.1.7",
+    "three": "^0.152.2"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.0.0",

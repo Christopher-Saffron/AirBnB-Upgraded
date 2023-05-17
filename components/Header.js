@@ -15,7 +15,9 @@ function Header({placeholder}) {
     const router = useRouter()
 
     const searchWithEnter = (e) => {
-        if (e.key !== 'Enter') return
+        if (e.key !== 'Enter' || !searchInput) return
+
+        
         router.push({
             pathname: '/search',
             query: {
@@ -44,6 +46,7 @@ function Header({placeholder}) {
     }
 
     const search = () => {
+        if (!searchInput) return
         router.push({
             pathname: '/search',
             query: {
@@ -77,14 +80,14 @@ function Header({placeholder}) {
                 <p className='hidden lg:inline-block cursor-pointer'>Become a host</p>
                 <GlobeAltIcon  className='h-6 cursor-pointer' />
 
-                <div className='flex items-center space-x-2 border-2 p-2 rounded-full'>
+                <div className='flex items-center space-x-2 border-2 p-2 rounded-full cursor-pointer duration-200 transition hover:border-[#FD5B61] hover:bg-red-300' onClick={() => {router.push('/register')}}>
                     <MenuIcon className='h-6' />
                     <UserCircleIcon className='h-6' />
                 </div>
             </div>
 
             {searchInput && (
-                <div className='flex flex-col col-span-3 mx-auto mt-10'>
+                <div className='flex flex-col col-span-3 mx-auto mt-10 headerSearch'>
                     <DateRangePicker 
                         ranges={[selectionRange]} 
                         minDate={new Date()}

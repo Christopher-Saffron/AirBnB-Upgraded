@@ -30,6 +30,87 @@
     animation: heartAnim .3s ease-in-out forwards;
 }
 
+.slowDisappear {
+    animation: slowDisappear 5s ease-in-out forwards;
+}
+
+.messageRight, .messageLeft {
+    position: relative;
+    z-index: 10;
+
+}
+.messageLeft:before {
+    content: '';
+    z-index: 0;
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    top: 90%;
+    left: -3%;
+    transform: rotate(-140deg);
+    background-color: #FD5B61;
+}
+
+.messageRight:before {
+    content: '';
+    z-index: 0;
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    top: 90%;
+    right: -3%;
+    transform: rotate(140deg);
+    background-color: rgb(229 231 235);
+}
+
+.chatWindow {
+    animation: chatWindowAnim .3s ease-in-out forwards;
+}
+
+.reservationBar .rdrDefinedRangesWrapper {
+    display: none;
+}
+
+.headerSearch .rdrDefinedRangesWrapper {
+    display: block !important;
+}
+
+@media (max-width: 768px) {
+    .headerSearch .rdrDefinedRangesWrapper {
+        display: none !important;
+    }
+  }
+
+@keyframes chatWindowAnim {
+    0% {
+        opacity: 0;
+        bottom: 20px;
+    }
+    100% {
+        opacity: 1;
+        bottom: 80px;
+    }
+}
+
+@keyframes slowDisappear {
+    0% {
+        opacity: 0;
+        left: -120px;
+    }
+    20% {
+        opacity: 1;
+        left: -140px;
+    }
+    95% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
 @keyframes heartAnim {
     0% {
         transform: scale(1.0);

@@ -15,6 +15,7 @@ import Reviews from '@/components/pageComponents/Reviews';
 import LocationMap from '@/components/pageComponents/LocationMap';
 import FooterPage from '@/components/pageComponents/FooterPage';
 import Room from '@/components/pageComponents/Room';
+import Reservation from '@/components/pageComponents/Reservation';
 // import SEARCH_RESULTS from '../../lib/getSearchResults'
 
 function Place({ result }) {
@@ -25,10 +26,10 @@ function Place({ result }) {
     </Head>
     <div className=''>
         <Header />
-        <div className='mt-3 max-w-6xl mx-auto min-h-screen'>
+        <div className='mt-3 max-w-6xl mx-auto min-h-screen '>
           <div className='px-4'>
             <h3 className='text-3xl mb-2'>{result.title}</h3>
-            <div className='flex justify-between items-center '>
+            <div className='flex flex-col md:flex-row justify-between items-start md:items-center '>
               <div className='flex items-center'>
                 <div className='flex items-center font-bold'>
                   <StarIcon className='h-4 inline-block' />
@@ -39,35 +40,28 @@ function Place({ result }) {
                   {/* {Math.floor(Math.random() * 1000)} reviews */}
                   {result.reviews} reviews
                 </div>
-                <div className='bg-black h-1 w-1 rounded-full mx-3' />
-                <div className='flex items-center text-gray-600'>
+                <div className='bg-black h-1 w-1 rounded-full mx-3 hidden md:block' />
+                <div className=' items-center text-gray-600 hidden md:flex'>
                   <LightningBoltIcon className='h-4 inline-block' />
                   Superhost
                 </div>
                 <div className='bg-black h-1 w-1 rounded-full mx-3' />
                 <div className='font-bold underline italic'>{result.location}</div>
               </div>
-              <ShareSave />
+              <ShareSave link={result.google} />
             </div>
           </div>
             <ImageViewer img={result.img} />
-            <div className='flex text-2xl font-semibold justify-between w-1/2 px-4 items-center'>
+            <div className='flex text-2xl font-semibold justify-start gap-8 w-full lg:w-1/2 px-4 items-center'>
               <h2>Room hosted by {result.person.hostName}</h2>
               <div className='h-12 w-12 relative '>
                   <Image src={result.person.avatarUrl} fill className=' rounded-full object-contain' alt='' />
               </div>
             </div>
             
-            <div className='px-4 mt-3 flex'>
-              
+            <div className=' mt-3 flex justify-center items-center gap-x-2 px-4 md:items-stretch flex-col md:flex-row'>
               <div className=' pt-4 w-full flex-grow'>
                 <div className=' border-b border-gray-300 pb-6'>
-                  {/* <div className='flex items-center justify-center'>
-                    {result.tags.map((tag,i) => (
-                      <div key={i} className=' select-none bg-red-500 bg-gradient-to-t from-red-300 to-red-200 px-4 py-3 rounded-lg font-serif text-center w-fit'>{tag}</div>
-                    ))}
-
-                  </div> */}
                   <AdditionalTags flex={'row'} num={result.randomColsTags } />
                   <AdditionalTags flex={'col'} num={result.randomRowTags} />
                 </div>
@@ -75,14 +69,12 @@ function Place({ result }) {
                 <WhatThisPlaceOffers randomOffersArray={result.randomOffersArray} />
                 
               </div>
-              <div className=' w-full flex-grow max-w-[450px] border-green-500 border'>
-                <div className='border border-red-500 h-96 w-2/3 mx-auto sticky top-32'>
-                  aaa
-                </div>
+              <div className=' w-fit mx-center mt-6 md:mt-0 md:w-full flex-grow max-w-[450px]'>
+                <Reservation info={{price: result.price, star: result.star, reviews: result.reviews}} />
               </div>
               
             </div>
-            <Reviews commentsArray={result.commentsArray.results} />
+            <Reviews star={result.star} reviews={result.reviews} commentsArray={result.commentsArray.results} />
 
             <LocationMap coords={{lat: result.lat, long: result.long}} />
             <Room />
@@ -109,7 +101,7 @@ export const getStaticProps = async ({ params }) => {
   const randomRowTags = []
   const randomColsTags = []
   while (randomRowTags.length < 3) {
-    const randomNum = Math.floor((Math.random() * 8)) // 8 random tags
+    const randomNum = Math.floor((Math.random() * 8)) // we have 8 random tags
     if (!randomNumberTags.includes(randomNum)) {
       randomNumberTags.push(randomNum)
       randomRowTags.push(randomNum)
@@ -117,7 +109,7 @@ export const getStaticProps = async ({ params }) => {
   }
 
   while (randomColsTags.length < 3) {
-    const randomNum = Math.floor((Math.random() * 8)) // 8 random tags
+    const randomNum = Math.floor((Math.random() * 8)) // we have 8 random tags
     if (!randomNumberTags.includes(randomNum)) {
       randomNumberTags.push(randomNum)
       randomColsTags.push(randomNum)
@@ -139,7 +131,7 @@ export const getStaticProps = async ({ params }) => {
   const randomOffersArray = [];
 
   while (randomOffersArray.length < 6) {
-    const randomNum = Math.floor((Math.random() * 17)) // 17 random OFFERS
+    const randomNum = Math.floor((Math.random() * 17)) // we have 17 random OFFERS
     if (!randomOffersArray.includes(randomNum)) {
       randomOffersArray.push(randomNum)
     }

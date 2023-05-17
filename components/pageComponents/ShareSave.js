@@ -59,7 +59,7 @@ function ShareSave({link, id}) {
 
     return (
         <>
-            <div className='flex gap-3 select-none'>
+            <div className='flex gap-3 select-none self-end mt-3 md:mt-0'>
                 <div className='flex gap-1 items-center cursor-pointer underline' onClick={shareLink}>
                     <UploadIcon className='h-6 w-6' />
                     <span>Share</span>
@@ -81,7 +81,7 @@ function ShareSave({link, id}) {
                                 <p className='font-semibold'>Link to this website:</p>
                                 <p className='italic text-gray-600' >{`${window.location.origin}${router.asPath}`}</p>
                             </div>
-                            <div onClick={() => {copyLink(`${window.location.origin}${router.asPath}`)}} className=' border-t border-gray-300 py-3 text-xl flex items-center gap-3 cursor-pointer hover:text-red-500 hover:underline underline-offset-4'>
+                            <div onClick={() => {copyLink(link)}} className=' border-t border-gray-300 py-3 text-xl flex items-center gap-3 cursor-pointer hover:text-red-500 hover:underline underline-offset-4'>
                                 <div className='h-6 w-6  relative'>
                                     <Image src='/copy.svg' alt='' fill className='object-contain' />
                                 </div>

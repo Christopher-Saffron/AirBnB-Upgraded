@@ -6,7 +6,7 @@ function MeetYourHost({person, }) {
   return (
     <div className='text-gray-800'>
         <p className=' text-2xl font-bold my-6'>Meet your host</p>
-        <div className='border border-gray-200 rounded-3xl bg-slate-100 w-full min-h-[900px] flex flex-col py-10 items-center'>
+        <div className='border border-gray-200 rounded-3xl bg-slate-100  mx-auto w-full lg:w-5/6 flex flex-col py-10 items-center'>
             <div className='bg-white rounded-xl  shadow-xl relative py-4 w-2/4 max-w-[250px]'>
                 <div className=' h-28 w-28 relative mx-auto'>
                     <Image src={person.avatarUrl} alt={person.hostName} fill className='object-contain rounded-full' />
