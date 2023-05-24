@@ -5,13 +5,10 @@ import Account from '@/models/Account'
 import Travel from '@/models/Travel'
 import React, { useEffect, useState } from 'react'
 import { getSearchResults } from '@/lib/getSearchResults'
-import { connectDatabase } from '@/lib/db'
-// import { connectDatabase } from '@/lib/db.js';
-
+import { getSession, useSession } from "next-auth/react"
 function ProcessPayment() {
     const router = useRouter()
     // console.log(router.query)
-
   return (
     <div className='min-h-screen'>
         <Header   />
@@ -38,37 +35,26 @@ function ProcessPayment() {
 export default ProcessPayment
 
 export async function getServerSideProps(context) {
-  const { client, db } = await connectDatabase();
+  const session = await getSession(context)
+  const email = session?.user?.email || '' // Use optional chaining to access the email property
 
-  const travelsCollection = await db.collection('Travel')
+  console.log(context)
 
-  const travels = await travelsCollection.find({}).toArray();
+  try {
+    const res = await fetch('http://localhost:3000/api/travel/new', {
+      method: 'POST',
+      body: JSON.stringify({
+        ...context.query,
+        email: email,
+      }),
+    })
 
-  // console.log(travels)
-  console.log(context.query)
-  const newTravel = await new Travel(context.query)
-  console.log(newTravel)
-
-  newTravel.save({ timeout: 20000 });
-  // Close the MongoDB client connection
-  await client.close();
+    // Handle the response from the fetch request if needed
+  } catch (err) {
+    console.log(err)
+  }
 
   return {
-    props: {
-    },
-  };
+    props: {},
+  }
 }
-
-
-// Access the "accounts" collection
-  // const accHistoryCollection = await db.collection('acc_history');
-
-  // // Query documents from the collection
-  // const accHistory = await accHistoryCollection.find({}).toArray();
-  // console.log(accHistory)
-
-  // Serialize the _id field
-// const serializedAcc = accHistory.map((account) => ({
-//   ...account,
-//   _id: account._id.toString(),
-// }));
