@@ -45,8 +45,6 @@ export default function PaypalButton({info}) {
                   return actions.order.capture().then((details) => {
                       const name = details.payer.name.given_name;
                       alert(`Transaction completed by ${name}`);
-                      // router.push('/success?from=paypal', undefined, {shallow:true, state: {}})
-                    //   router.push('/success?from=paypal')
                       router.push({pathname: '/processPayment', query: {
                             ...info
                         }})
@@ -65,35 +63,3 @@ export default function PaypalButton({info}) {
   );
 }
 
-
-// import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
-
-
-// const PayPalButton = () => {
-//     const createOrder = (data, actions) => {
-//       return actions.order.create({
-//         purchase_units: [
-//           {
-//             amount: {
-//               value: '10.00' // Replace with the actual amount you want to charge
-//             }
-//           }
-//         ]
-//       });
-//     };
-  
-//     const onApprove = (data, actions) => {
-//       return actions.order.capture().then(function(details) {
-//         // Handle the payment success
-//         console.log('Payment completed:', details);
-//       });
-//     };
-  
-//     return (
-//       <PayPalScriptProvider options={{ 'client-id': PAYPAL_CLIENT_ID }}>
-//         <PayPalButtons createOrder={createOrder} onApprove={onApprove} />
-//       </PayPalScriptProvider>
-//     );
-//   };
-  
-//   export default PayPalButton;

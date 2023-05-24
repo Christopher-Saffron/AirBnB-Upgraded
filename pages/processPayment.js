@@ -8,6 +8,10 @@ import { getSearchResults } from '@/lib/getSearchResults'
 import { getSession, useSession } from "next-auth/react"
 function ProcessPayment() {
     const router = useRouter()
+
+    useEffect(() => {
+      router.push('/history')
+    }, [])
     // console.log(router.query)
   return (
     <div className='min-h-screen'>
@@ -37,9 +41,6 @@ export default ProcessPayment
 export async function getServerSideProps(context) {
   const session = await getSession(context)
   const email = session?.user?.email || '' // Use optional chaining to access the email property
-
-  console.log(context)
-
   try {
     const res = await fetch('http://localhost:3000/api/travel/new', {
       method: 'POST',

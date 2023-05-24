@@ -3,14 +3,12 @@ import Header from '@/components/Header'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { getSearchResults } from '@/lib/getSearchResults'
-import { connectDatabase } from '@/lib/db.js';
 import PayPalButton from '@/components/checkoutForm/PaypalButton'
 import Image from 'next/image'
 import CheckoutForm from '@/components/checkoutForm/CheckoutForm'
 
 function Payment() {
     const router = useRouter()
-    console.log(router.query)
 
   return (
     <div>
@@ -62,25 +60,25 @@ export default Payment
 
 
 export async function getServerSideProps() {
-    const { client, db } = await connectDatabase();
+  //   const { client, db } = await connectDatabase();
 
-    // Access the "accounts" collection
-    const accHistoryCollection = await db.collection('acc_history');
-    // Query documents from the collection
-    const accHistory = await accHistoryCollection.find({}).toArray();
+  //   // Access the "accounts" collection
+  //   const accHistoryCollection = await db.collection('acc_history');
+  //   // Query documents from the collection
+  //   const accHistory = await accHistoryCollection.find({}).toArray();
 
-    // Serialize the _id field
-  const serializedAcc = accHistory.map((account) => ({
-    ...account,
-    _id: account._id.toString(),
-  }));
+  //   // Serialize the _id field
+  // const serializedAcc = accHistory.map((account) => ({
+  //   ...account,
+  //   _id: account._id.toString(),
+  // }));
   
-    // Close the MongoDB client connection
-    await client.close();
+  //   // Close the MongoDB client connection
+  //   await client.close();
   
     return {
       props: {
-        accounts: serializedAcc, // Pass the accounts data to your page
+        // accounts: serializedAcc, // Pass the accounts data to your page
       },
     };
 }

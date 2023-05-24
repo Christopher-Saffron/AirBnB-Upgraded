@@ -1,5 +1,7 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google";
+import dbConnect from '@/lib/dbConnect'
+import Account from '@/models/Account'
 export const authOptions = {
   // Configure one or more authentication providers
   providers: [
@@ -8,24 +10,22 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET
     })
   ],
-  auth: {
-    // Specify your event handlers
-    // The createUser event is triggered when a new user is successfully created
-    // You can define a custom event handler function to create a document in your MongoDB database
-    async createUser(user) {
-      // Connect to your MongoDB database
-      // const { db } = await connectDatabase();
-      
-      // // Create a new document in your MongoDB collection
-      // await db.collection('users').insertOne({
-      //   name: user.name,
-      //   email: user.email,
-      //   createdAt: new Date(),
-      //   // Add additional properties as needed
-      // });
+  callbacks: {
+    signIn: async (user, account, profile) => {
+      await dbConnect()
+      console.log(user.user)
+      const existingUser = await Account.findOne({email: user.user.email})
 
-      console.log('AAAAAAAAAAAAAAAAAAAA')
+      if (existingUser) {
+        console.log('Continue')
+        return Promise.resolve(true);
+      } else {
+        console.log('Create first time')
+        const newUser = await new Account({email: user.user.email})
+        newUser.save()
+        return Promise.resolve(true);
+      }
     },
-  },
+  }
 }
 export default NextAuth(authOptions)
