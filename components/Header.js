@@ -6,8 +6,11 @@ import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { useRouter } from 'next/router';
+import { useSession, signIn, signOut } from "next-auth/react"
+import HeaderMenu from './HeaderMenu';
 
 function Header({placeholder}) {
+    const { data: session } = useSession()
     const [searchInput, setSearchInput] = useState('')
     const [startDate, setStartDate] = useState(new Date())
     const [endDate, setEndDate] = useState(new Date())
@@ -65,7 +68,7 @@ function Header({placeholder}) {
    
 
   return (
-    <header className='sticky  top-0 z-50 bg-white mx-auto shadow-md p-5 md:px-10'>
+    <header className='sticky  top-0 z-[101] bg-white mx-auto shadow-md p-5 md:px-10'>
         <div className='max-w-6xl mx-auto grid grid-cols-3'>
             <div onClick={() => {router.push('/')}} className='relative flex items-center h-10 cursor-pointer my-auto'>
                 <Image src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png'  style={{objectPosition: 'left', objectFit:"contain"}} fill  alt='' />
@@ -79,11 +82,9 @@ function Header({placeholder}) {
             <div className='flex space-x-4 items-center justify-end text-gray-500'>
                 <p className='hidden lg:inline-block cursor-pointer'>Become a host</p>
                 <GlobeAltIcon  className='h-6 cursor-pointer' />
-
-                <div className='flex items-center space-x-2 border-2 p-2 rounded-full cursor-pointer duration-200 transition hover:border-[#FD5B61] hover:bg-red-300' onClick={() => {router.push('/register')}}>
-                    <MenuIcon className='h-6' />
-                    <UserCircleIcon className='h-6' />
-                </div>
+                
+                <HeaderMenu />
+                
             </div>
 
             {searchInput && (

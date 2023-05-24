@@ -20,7 +20,7 @@ function InfoCard({img, location, title, description, star, price, id, tags}) {
     }, [])
     
   return (
-    <div onClick={() => router.push(`/place/${id}`)} className='flex bg-gray-100 rounded-lg mb-3 md:bg-none md:mb-0 flex-col md:flex-row py-2 md:py-7 px-2 border-b cursor-pointer hover:opacity-80 hover:shadow-lg transition duration-200 ease-out first:border-t '>
+    <div onClick={() => router.push(`/place/${id}`)} className='flex bg-gray-100  rounded-lg mb-3 md:bg-white md:mb-0 flex-col md:flex-row py-2 md:py-7 px-2 border-b cursor-pointer hover:opacity-80 hover:shadow-lg transition duration-200 ease-out first:border-t '>
         <div className='relative h-48 w-full md:h-52 md:w-80 flex-shrink-0'>
             <Image src={img} alt='' fill style={{objectFit: 'cover'}} className='rounded-lg md:rounded-2xl' />
         </div>

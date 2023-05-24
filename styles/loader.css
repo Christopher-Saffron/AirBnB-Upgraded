@@ -1,0 +1,65 @@
+@keyframes pound {
+    to {
+      transform: scale(1.2);
+      box-shadow: 1px 2px 3px 0 rgba(255, 0, 0, 0.65), 2px 6px 12px 0 rgba(255, 0, 0, 0.5), 3px 8px 15px 0 rgba(255, 0, 0, 0.45)
+    }
+  }
+  
+  ul.loader {
+    display: block;
+    position: relative;
+    width: 5em;
+  }
+  
+  .loader li {
+    list-style: none;
+    display: block;
+    float: left;
+    width: 0.5em;
+    height: 3em;
+    margin: 0 0.5em 0 0;
+    background: #fd343b;
+    background: -moz-linear-gradient(top, #fd343b 0%, #FD5B61 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fd343b),  color-stop(100%,#FD5B61));
+    background: -webkit-linear-gradient(top, #fd343b 0%,#FD5B61 100%);
+    background: -o-linear-gradient(top, #fd343b 0%,#FD5B61 100%);
+    background: -ms-linear-gradient(top, #fd343b 0%,#FD5B61 100%);
+    background: linear-gradient(to bottom, #fd343b 0%,#FD5B61 100%);
+    box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.0), 1px 1px 1px 0 rgba(0, 0, 0, 0.0), 1px 1px 1px 0 rgba(0, 0, 0, 0.0);
+    animation: pound .7s ease-in-out infinite alternate;
+    animation-delay: 0.05s;
+    transform-origin: center;
+  }
+  
+  .loader li:nth-child(2) {
+    animation-delay: 0.20s;
+  }
+  
+  .loader li:nth-child(3) {
+    animation-delay: 0.35s;
+  }
+  
+  .loader li:nth-child(4) {
+    animation-delay: 0.50s;
+  }
+  
+  .loader li:nth-child(5) {
+    animation-delay: 0.65s;
+  }
+  
+  .processing:after {
+    content: '.';
+    animation: processingAnim 2s linear infinite;
+  }
+
+  @keyframes processingAnim {
+    0% {
+        content: '.';
+    }
+    33% {
+        content: '..';
+    }
+    66% {
+        content: '...';
+    }
+  }

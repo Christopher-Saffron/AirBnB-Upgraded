@@ -10,12 +10,31 @@ import MediumCard from '@/components/MediumCard'
 import LargeCard from '@/components/LargeCard'
 import Footer from '@/components/Footer'
 import { useRouter } from 'next/router';
+import { useSession, getSession } from "next-auth/react"
+import { useEffect } from 'react'
 
 
 export default function Home({exploreData, cardsData}) {
   const router = useRouter()
+  // const {data:session, status:loading} = useSession();
 
+  // ///IF LOGGED IN FOR THE FIRST TIME, CREATE AN OBJECT IN DATABASE
+  // useEffect(() => {
+  //   const handleFirstTimeLogin = async () => {
+  //     if (session) {
+  //       const user = session.user;
+  //       const isNewUser = user.newUser; // Assume newUser property is set by NextAuth.js
 
+  //       if (isNewUser) {
+  //         // Run your function here when the user logs in for the first time
+  //         console.log("User logged in for the first time:", user);
+  //         // Call your function or perform any actions you need
+  //       }
+  //     }
+  //   };
+
+  //   handleFirstTimeLogin();
+  // }, [session]);
 
   const searchWithTag = (tag) => {
     router.push({

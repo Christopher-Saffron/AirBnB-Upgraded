@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { DateRangePicker } from 'react-date-range';
 import { StarIcon, LightningBoltIcon } from '@heroicons/react/solid';
+import { useRouter } from 'next/router';
 
 function Reservation({info}) {
+    const router = useRouter()
     const [startDate, setStartDate] = useState(new Date())
     const [endDate, setEndDate] = useState(new Date())
     const [guestNumber, setGuestNumber] = useState(1)
@@ -55,6 +57,24 @@ function Reservation({info}) {
         return diffDays;
     }
 
+    function reserve () {
+        if (calculatedInfo.howManyDays <= 0) return
+        
+        const start = startDate.toISOString().slice(0,10);
+        const end = endDate.toISOString().slice(0,10);
+        router.push({
+            pathname: '/payment',
+            query: {
+                placeName:info.placeName,
+                placeHost:info.placeHost,
+                fullPrice: total,
+                dateStart: start,
+                dateEnd: end,
+                img: info.img
+            }
+        })
+    }
+
   return (  
     // UNTIL I FIND A BETTER WAY, WE WILL BE HIDING ONE SECTION OF THE DATA-PICKER WITH CSS
     <div className='border p-4 border-gray-300 shadow-xl w-fit mx-auto relative md:sticky md:top-32 rounded-md bg-white reservationBar'>
@@ -81,10 +101,10 @@ function Reservation({info}) {
             Guests:
             <input className='bg-inherit pl-2 text-[#FD5B61] focus:outline-none' value={guestNumber} onChange={(e) => {setGuestNumber(e.target.value)}} maxLength={2} max={10} type='number' placeholder='1' />
         </div>
-        <div className='mx-auto cursor-pointer duration-200 hover:scale-105 w-full px-3 text-center font-semibold text-2xl text-white rounded-md mt-4 py-3 bg-gradient-to-r from-[#FD5B61] to-pink-500'>
+        <div onClick={reserve} className='mx-auto cursor-pointer duration-200 hover:scale-105 w-full px-3 text-center font-semibold text-2xl text-white rounded-md mt-4 py-3 bg-gradient-to-r from-[#FD5B61] to-pink-500'>
             Reserve
         </div>
-        <p className='italic text-center mt-3 text-gray-600'>You won't be charged yet</p>
+        {/* <p className='italic text-center mt-3 text-gray-600'>You won't be charged yet</p> */}
         <div className='p-2 flex flex-col gap-3 border-b border-gray-300'>
             <div className='flex justify-between'>
                 <p className='underline'>{info.price.replace('/ night', '')} x {calculatedInfo.howManyDays} {calculatedInfo.howManyDays === 1 ? 'night' : 'nights'}</p>

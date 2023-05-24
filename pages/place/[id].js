@@ -70,7 +70,7 @@ function Place({ result }) {
                 
               </div>
               <div className=' w-fit mx-center mt-6 md:mt-0 md:w-full flex-grow max-w-[450px]'>
-                <Reservation info={{price: result.price, star: result.star, reviews: result.reviews}} />
+                <Reservation info={{price: result.price, star: result.star, reviews: result.reviews, placeName: result.title, placeHost: result.person.hostName, img:result.img}} />
               </div>
               
             </div>

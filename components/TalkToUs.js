@@ -100,7 +100,7 @@ function TalkToUs() {
 
                             <div className="absolute right-0 top-1/2 transform translate-x-1/2 rotate-45 w-2 h-2 bg-[#FD5B61]"></div>
                         </div>
-                        <span className='p-3 block text-3xl relative z-10'>👋</span>
+                        <span className='p-3 block text-3xl relative ' style={{zIndex: '1000000'}}>👋</span>
                 </div>
             </div>
         </>

@@ -1,4 +1,5 @@
 import '@/styles/globals.css'
+import '@/styles/loader.css'
 import 'react-image-lightbox/style.css'; // This only needs to be imported once in your app
 
 import Router from 'next/router'

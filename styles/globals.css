@@ -77,6 +77,37 @@
     display: block !important;
 }
 
+.headerMenuOption {
+    animation: headerMenuOptionAnim .3s ease-in-out forwards;
+}
+
+@keyframes headerMenuOptionAnim {
+    0% {
+        opacity: 0;
+        top: -20px;
+    }
+    100% {
+        opacity: 1;
+        top: 0px;
+    }
+}
+
+.headerMenuOptionHide {
+    animation: headerMenuOptionHideAnim .5s ease-in-out forwards;
+}
+
+@keyframes headerMenuOptionHideAnim {
+    0% {
+        
+        opacity: 1;
+        top: 0px;
+    }
+    100% {
+        opacity: 0;
+        top: -20px;
+    }
+}
+
 @media (max-width: 768px) {
     .headerSearch .rdrDefinedRangesWrapper {
         display: none !important;
