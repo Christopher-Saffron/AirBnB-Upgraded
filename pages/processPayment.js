@@ -9,10 +9,10 @@ import { getSession, useSession } from "next-auth/react"
 function ProcessPayment() {
     const router = useRouter()
 
+    ///THIS PAGE IS A BUFFER, IMMEDIATELY AFTER THE DATA GETS TRANSPORTED HERE AND SAVED, SHOW USER THE /HISTORY PAGE
     useEffect(() => {
       router.push('/history')
     }, [])
-    // console.log(router.query)
   return (
     <div className='min-h-screen'>
         <Header   />
@@ -31,7 +31,6 @@ function ProcessPayment() {
             </div>
             
         </main>
-        {/* <Footer /> */}
     </div>
   )
 }
@@ -42,7 +41,7 @@ export async function getServerSideProps(context) {
   const session = await getSession(context)
   const email = session?.user?.email || '' // Use optional chaining to access the email property
   try {
-    const res = await fetch('http://localhost:3000/api/travel/new', {
+    const res = await fetch(`${process.env.HOST}api/travel/new`, {
       method: 'POST',
       body: JSON.stringify({
         ...context.query,

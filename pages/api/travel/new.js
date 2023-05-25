@@ -9,7 +9,6 @@ import Account from '@/models/Account'
 export default async function handler(req, res) {
   const { method } = req
   const dataParsed = JSON.parse(req.body)
-  console.log('ding', dataParsed)
 
   try {
     await dbConnect()

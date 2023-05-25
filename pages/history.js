@@ -12,7 +12,6 @@ import HistoryItem from '@/components/HistoryItem'
 function Search({travels}) {
     const router = useRouter()
     console.log(travels)
-
   return (
     <div>
         <Header   />
@@ -36,6 +35,15 @@ export default Search
 export async function getServerSideProps(context) {
   await dbConnect()
   const session = await getSession(context);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
+    }
+  }
   const account = await Account.findOne({ email: session.user.email }).populate('travels');
 
   const travels = account.travels.map((travel) => {

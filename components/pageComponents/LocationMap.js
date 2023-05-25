@@ -6,22 +6,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 function LocationMap({coords}) {
-
-
     const [viewport, setViewport] = useState({
                 latitude: coords.lat,
                 longitude: coords.long,
                 zoom: 9
     })
-    
-    useEffect(() => {
-        // setViewport(prevState => ({
-        //     ...prevState,
-        //     latitude: center.latitude,
-        //     longitude: center.longitude
-        // }))
-        console.log(coords)
-    }, [])
     
     return (
       <div className=' py-5 border-t border-gray-300 px-5'>
