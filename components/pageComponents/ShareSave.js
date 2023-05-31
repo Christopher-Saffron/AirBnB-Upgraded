@@ -12,6 +12,7 @@ function ShareSave({link, id}) {
 
     ///DEFAULT CHECK IF USER LIKED THE PLACE
     useEffect(() => {
+        console.log(link)
         if (!sessionStorage.getItem('likedPlaces')) {
             return
         }
@@ -86,7 +87,7 @@ function ShareSave({link, id}) {
                                     <Image src='/copy.svg' alt='' fill className='object-contain' />
                                 </div>
                                 <p className='font-semibold'>Link to google maps:</p>
-                                <p className='italic text-gray-600' >{`${window.location.origin}${router.asPath}`}</p>
+                                <p className='italic text-gray-600' >Click here</p>
                             </div>
                         </div>
                         <div onClick={() => {toggleShareBox(false)}} className='absolute bg-red-300 bg-gradient-to-t from-red-700 to-red-300  transition transform duration-200 h-full top-0 -right-9 hover:-right-12 hover:px-5 rounded-r-2xl font-bold text-2xl text-white cursor-pointer border flex px-3 flex-col items-center justify-center' style={{zIndex: 20}}>X</div>

@@ -18,6 +18,11 @@ import Room from '@/components/pageComponents/Room';
 import Reservation from '@/components/pageComponents/Reservation';
 // import SEARCH_RESULTS from '../../lib/getSearchResults'
 
+// import Room1 from '../components/three-models/Room1.js'
+// import Room2 from '../components/three-models/Room2.js'
+// import Room3 from '../components/three-models/Room3.js'
+// import Room4 from '../components/three-models/Room4.js'
+
 function Place({ result }) {
   return (
     <>
@@ -26,6 +31,7 @@ function Place({ result }) {
     </Head>
     <div className=''>
         <Header />
+        {/* <Room /> */}
         <div className='mt-3 max-w-6xl mx-auto min-h-screen '>
           <div className='px-4'>
             <h3 className='text-3xl mb-2'>{result.title}</h3>
@@ -77,7 +83,7 @@ function Place({ result }) {
             <Reviews star={result.star} reviews={result.reviews} commentsArray={result.commentsArray.results} />
 
             <LocationMap coords={{lat: result.lat, long: result.long}} />
-            <Room />
+            <Room room={result.room}/>
         </div>
         <FooterPage />
     </div>
@@ -96,7 +102,6 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params }) => {
   const searchResults = await getSearchResults()
   const result = searchResults.find((result) => result.id === params.id);
-
   const randomNumberTags = []
   const randomRowTags = []
   const randomColsTags = []
