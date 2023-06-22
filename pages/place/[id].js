@@ -1,9 +1,9 @@
 import Header from '@/components/Header'
-import { getSearchResult, getSearchResults } from '@/lib/getSearchResults'
+import { getSearchResults } from '@/lib/getSearchResults'
 import { StarIcon, LightningBoltIcon } from '@heroicons/react/solid';
 
 import Head from 'next/head';
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Image from 'next/image';
 import ImageViewer from '@/components/pageComponents/ImageViewer';
 import { faker } from '@faker-js/faker';
@@ -16,12 +16,6 @@ import LocationMap from '@/components/pageComponents/LocationMap';
 import FooterPage from '@/components/pageComponents/FooterPage';
 import Room from '@/components/pageComponents/Room';
 import Reservation from '@/components/pageComponents/Reservation';
-// import SEARCH_RESULTS from '../../lib/getSearchResults'
-
-// import Room1 from '../components/three-models/Room1.js'
-// import Room2 from '../components/three-models/Room2.js'
-// import Room3 from '../components/three-models/Room3.js'
-// import Room4 from '../components/three-models/Room4.js'
 
 function Place({ result }) {
   return (
@@ -31,7 +25,6 @@ function Place({ result }) {
     </Head>
     <div className=''>
         <Header />
-        {/* <Room /> */}
         <div className='mt-3 max-w-6xl mx-auto min-h-screen '>
           <div className='px-4'>
             <h3 className='text-3xl mb-2'>{result.title}</h3>

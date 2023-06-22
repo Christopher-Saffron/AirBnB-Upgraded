@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
 const TravelSchema = new mongoose.Schema({
   fullPrice: {
@@ -19,6 +19,7 @@ const TravelSchema = new mongoose.Schema({
   img: {
     type: String,
   },
-})
+});
 
-export default mongoose.models?.Travel || mongoose.model('Travel', TravelSchema)
+export default mongoose.models?.Travel ||
+  mongoose.model("Travel", TravelSchema);

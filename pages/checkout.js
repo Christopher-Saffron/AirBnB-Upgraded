@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+);
 
-export default function Checkout({info}) {
+export default function Checkout({ info }) {
   const [sessionId, setSessionId] = useState(null);
-  
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch("/api/create-checkout-session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items: [{ id: "xl-tshirt" }], fullPrice: info.fullPrice }),
+        body: JSON.stringify({
+          items: [{ id: "xl-tshirt" }],
+          fullPrice: info.fullPrice,
+        }),
       });
 
       const data = await response.json();

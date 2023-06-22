@@ -2,35 +2,35 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 ////Just forming a query and making it more visible
 const queryForm = (info) => {
-  let startQuery = ``
+  let startQuery = ``;
   for (const item in info) {
-    startQuery += `&${encodeURIComponent(item)}=${encodeURIComponent(info[item])}`;
+    startQuery += `&${encodeURIComponent(item)}=${encodeURIComponent(
+      info[item]
+    )}`;
   }
-  return startQuery
-}
-
+  return startQuery;
+};
 
 export default async function handler(req, res) {
   const { items, info } = req.body;
 
   const infoJSON = queryForm(info);
 
-
   const session = await stripe.checkout.sessions.create({
-    payment_method_types: ['card'],
+    payment_method_types: ["card"],
     line_items: [
       {
         price_data: {
-          currency: 'pln',
+          currency: "pln",
           unit_amount: calculateOrderAmount(info.fullPrice),
           product_data: {
-            name: 'Travel and Hotel expenses',
+            name: "Travel and Hotel expenses",
           },
         },
         quantity: 1,
       },
     ],
-    mode: 'payment',
+    mode: "payment",
     success_url: `${process.env.HOST}processPayment?${infoJSON}`,
     // success_url: newLink,
     cancel_url: `${process.env.HOST}cancel`,
@@ -42,8 +42,8 @@ export default async function handler(req, res) {
 }
 
 const calculateOrderAmount = (fullPrice) => {
-  ///due to the numbers looking slightly scary in size, for whatever reason, 
-  ///instead of multiplying by 100, 
+  ///due to the numbers looking slightly scary in size - like, the default traveling costs
+  ///instead of multiplying by 100 to get real prices,
   ///i'm going to make sure the numbers are rather smaller than what they should be
   return Number(fullPrice) * 1;
 };

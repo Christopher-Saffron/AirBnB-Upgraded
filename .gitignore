@@ -19,6 +19,14 @@
 .DS_Store
 *.pem
 
+/ignore
+/ignore/
+/ignore/*
+/ignore/**
+
+.blender
+.blend
+
 # debug
 npm-debug.log*
 yarn-debug.log*
