@@ -1,12 +1,11 @@
-import Head from "next/head";
-import Header from "@/components/Header";
-import Banner from "@/components/Banner";
-import { getExploreNearby } from "@/lib/getExploreNearby";
+import Banner from "@/components/Banner.tsx";
+import Header from "@/components/Header.tsx";
+import LargeCard from "@/components/LargeCard";
+import MediumCard from "@/components/MediumCard";
 import SmallCard from "@/components/SmallCard";
 import { getCardsData } from "@/lib/getCardsData";
-import MediumCard from "@/components/MediumCard";
-import LargeCard from "@/components/LargeCard";
-import Footer from "@/components/Footer";
+import { getExploreNearby } from "@/lib/getExploreNearby";
+import Head from "next/head";
 import { useRouter } from "next/router";
 
 export default function Home({ exploreData, cardsData }) {
@@ -77,8 +76,6 @@ export default function Home({ exploreData, cardsData }) {
           buttonText="Get Inspired"
         />
       </main>
-
-      <Footer />
     </div>
   );
 }

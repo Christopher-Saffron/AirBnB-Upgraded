@@ -8,14 +8,21 @@ import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import HeaderMenu from "./HeaderMenu";
 
+interface SelectionRangeProps {
+  selection: {
+    startDate: Date;
+    endDate: Date;
+    key: string;
+  };
+}
+
 function Header({ placeholder }) {
   const [searchInput, setSearchInput] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [guestNumber, setGuestNumber] = useState(1);
   const router = useRouter();
-
-  const searchWithEnter = (e) => {
+  const searchWithEnter = (e): void => {
     if (e.key !== "Enter" || !searchInput) return;
 
     router.push({
@@ -34,32 +41,36 @@ function Header({ placeholder }) {
     return () => window.removeEventListener("keydown", searchWithEnter);
   }, []);
 
-  const selectionRange = {
-    startDate: startDate,
-    endDate: endDate,
-    key: "selection",
+  const selectionRange: SelectionRangeProps = {
+    selection: {
+      startDate: startDate,
+      endDate: endDate,
+      key: "selection",
+    },
   };
 
-  function handleSelect(ranges) {
-    setStartDate(ranges.selection.startDate);
-    setEndDate(ranges.selection.endDate);
+  function handleSelect(selection: SelectionRangeProps): void {
+    console.log(selection.selection);
+    // setStartDate(selection.range1.startDate);
+    // setEndDate(selection.range1.endDate);
   }
 
   const search = () => {
-    if (!searchInput) return;
-    router.push({
-      pathname: "/search",
-      query: {
-        location: searchInput,
-        startDate: startDate.toISOString(),
-        endDate: endDate.toISOString(),
-        guestNumber,
-      },
-    });
-    if (router.pathname === "/search") router.reload(window.location.pathname);
+    console.log(startDate);
+    // if (!searchInput) return;
+    // router.push({
+    //   pathname: "/search",
+    //   query: {
+    //     location: searchInput,
+    //     startDate: startDate.toISOString(),
+    //     endDate: endDate.toISOString(),
+    //     guestNumber,
+    //   },
+    // });
+    // if (router.pathname === "/search") router.reload();
   };
 
-  const resetInput = (e) => {
+  const resetInput = () => {
     setSearchInput("");
   };
 
@@ -85,7 +96,7 @@ function Header({ placeholder }) {
             onChange={(e) => {
               setSearchInput(e.target.value);
             }}
-            placeholder={placeholder || "Start your search"}
+            placeholder={placeholder ? placeholder : "Start your search"}
             value={searchInput}
             className=" flex-grow pl-5 bg-transparent outline-none text-sm text-gray-500 placeholder-gray-400"
             type="text"
@@ -120,7 +131,7 @@ function Header({ placeholder }) {
               <UsersIcon className="h-5" />
               <input
                 value={guestNumber}
-                onChange={(e) => setGuestNumber(e.target.value)}
+                onChange={(e) => setGuestNumber(parseInt(e.target.value, 10))}
                 min={1}
                 type="number"
                 className="w-12 pl-2 text-lg outline-none text-red-400"

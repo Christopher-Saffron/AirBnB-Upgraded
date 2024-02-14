@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+// import Header from "@/components/Header";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 
@@ -10,7 +10,7 @@ function Register() {
 
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <main className="flex flex-col max-w-screen-2xl min-h-screen relative  mx-auto overflow-hidden">
         {session ? (
           <>
@@ -24,7 +24,6 @@ function Register() {
           </>
         )}
       </main>
-      <Footer />
     </div>
   );
 }

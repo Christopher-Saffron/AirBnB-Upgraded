@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import Header from "@/components/Header.tsx";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
@@ -121,8 +121,6 @@ function Search({ searchResults }) {
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 }

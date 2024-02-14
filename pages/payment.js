@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import Header from "@/components/Header.tsx";
 import { useRouter } from "next/router";
 import React from "react";
 import PayPalButton from "@/components/checkoutForm/PaypalButton";
@@ -75,7 +75,6 @@ function Payment() {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

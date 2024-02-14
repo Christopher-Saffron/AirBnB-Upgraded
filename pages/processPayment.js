@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+import Header from "@/components/Header.tsx";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { getSession } from "next-auth/react";

@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import Header from "@/components/Header.tsx";
 import { useRouter } from "next/router";
 import React from "react";
 import { getSearchResults } from "@/lib/getSearchResults";
@@ -10,7 +10,6 @@ function Search() {
     <div>
       <Header />
       success from {router.query?.from}
-      <Footer />
     </div>
   );
 }

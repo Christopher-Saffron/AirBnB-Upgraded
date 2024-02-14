@@ -1,13 +1,9 @@
-import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import { getSearchResults } from "@/lib/getSearchResults";
-import Travel from "@/models/Travel";
+import HistoryItem from "@/components/HistoryItem";
 import dbConnect from "@/lib/dbConnect";
 import Account from "@/models/Account";
 import { getSession } from "next-auth/react";
-import HistoryItem from "@/components/HistoryItem";
+import React from "react";
 
 function Search({ travels }) {
   return (
@@ -25,7 +21,6 @@ function Search({ travels }) {
           ))}
         </div>
       </main>
-      <Footer />
     </div>
   );
 }
