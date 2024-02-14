@@ -7,9 +7,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 
 function Register() {
   const { data: session } = useSession();
-  useEffect(() => {
-    console.log(session);
-  }, [session]);
+
   return (
     <div>
       <Header />

@@ -3,7 +3,10 @@ import { PaperAirplaneIcon, chat } from "@heroicons/react/solid";
 
 function TalkToUs() {
   const [isWindowOpen, toggleWindow] = useState(false);
-  const [messages, setMessages] = useState(["Hello, how can we help You?"]);
+  const [messages, setMessages] = useState([
+    { id: 0, text: "Hello, how can we help You?" },
+  ]);
+  const [text, setText] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const chatRef = useRef(null);
   const inputRef = useRef(null);
@@ -19,28 +22,35 @@ function TalkToUs() {
     setTimeout(() => {
       setMessages((prevState) => [
         ...prevState,
-        "We have received Your message, please await our response.",
+        {
+          id: 0,
+          text: "We have received Your message, please await our response.",
+        },
       ]);
-    }, 1500);
+    }, 1000);
   };
 
   const addMessage = () => {
-    if (!inputRef.current.value) return;
+    if (!inputRef.current.value) {
+      console.log("apparently empty");
+      return;
+    }
 
-    setMessages((prevState) => [...prevState, inputRef.current.value]);
-    setTimeout(() => {
-      inputRef.current.value = "";
-    }, 200);
+    setMessages((prevState) => [...prevState, { id: 1, text }]);
+    setText("");
 
     sendAutomatedMessage();
   };
 
   const sendMessageWithEnter = (e) => {
     if (e.key === "Enter") {
-      // if (isFocused) {
-      //     addMessage()
-      // }
-      //     addMessage()
+      console.log("ding");
+      console.log(isFocused);
+      if (isFocused) {
+        console.log("dinggg");
+        addMessage();
+      }
+      // addMessage();
     }
   };
 
@@ -83,11 +93,11 @@ function TalkToUs() {
                 return (
                   <div
                     className={`even:text-black break-all even:bg-gray-200 bg-[#FD5B61] p-2 max-w-[180px] w-fit rounded-md text-white ${
-                      i % 2 ? "messageRight self-end" : "messageLeft"
+                      message.id === 1 ? "messageRight self-end" : "messageLeft"
                     }`}
                     key={i}
                   >
-                    {message}
+                    {message.text}
                   </div>
                 );
               })}
@@ -98,13 +108,19 @@ function TalkToUs() {
               <input
                 onFocus={handleFocus}
                 onBlur={handleBlur}
+                onChange={(e) => setText(e.target.value)}
+                value={text}
                 ref={inputRef}
-                className="text-gray-800 flex-grow focus:ring-0 focus:outline-none  p-2"
+                className="text-gray-800 flex-grow focus:ring-0 focus:outline-none  p-2 focus:border-2"
                 type="text"
                 placeholder="Type here..."
               />
               <div onClick={addMessage}>
-                <PaperAirplaneIcon className="h-8 w-8 rotate-45 text-[#FD5B61] -translate-y-1 cursor-pointer duration-100 hover:scale-110" />
+                <PaperAirplaneIcon
+                  className={`h-8 w-8 rotate-45 ${
+                    text !== "" ? "text-[#FD5B61]" : "text-black"
+                  } -translate-y-1 cursor-pointer duration-100 hover:scale-110`}
+                />
               </div>
             </div>
           </div>
