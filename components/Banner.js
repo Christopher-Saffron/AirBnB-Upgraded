@@ -22,7 +22,7 @@ function Banner() {
   return (
     <div className=" relative h-screen  sm:h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px]">
       <Carousel
-        className=" w-full select-none border relative h-screen sm:h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px]"
+        className=" w-full select-none  relative h-screen sm:h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px]"
         autoPlay
         infiniteLoop
         interval={4000}
@@ -36,55 +36,64 @@ function Banner() {
         swipeable={false}
         transitionTime={2000}
       >
-        <div className=" relative h-screen sm:h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px]">
+        <div className=" bannerDiv">
           <Image
             className=""
-            src="/bannerjapan.jpg"
+            src="/banner5.jpg"
             alt=""
             fill
             style={{ objectFit: "cover" }}
           />
         </div>
-        <div className=" relative h-screen sm:h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px]">
+        <div className=" bannerDiv">
           <Image
             className=""
-            src="/banner03.jpg"
+            src="/banner2.jpg"
             alt=""
             fill
             style={{ objectFit: "cover" }}
           />
         </div>
-        <div className=" relative h-screen sm:h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px]">
+        <div className=" bannerDiv">
           <Image
             className=""
-            src="/banner06.jpg"
+            src="/banner3.jpg"
             alt=""
             fill
             style={{ objectFit: "cover" }}
           />
         </div>
-        <div className=" relative h-screen sm:h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px]">
+        <div className=" bannerDiv">
           <Image
             className=""
-            src="/banner07.jpeg"
+            src="/banner4.jpg"
             alt=""
             fill
             style={{ objectFit: "cover" }}
           />
         </div>
-        <div className=" relative h-screen sm:h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px]">
+        <div className=" bannerDiv">
           <Image
             className=""
-            src="/banner08.jpg"
+            src="/banner1.jpg"
             alt=""
             fill
             style={{ objectFit: "cover" }}
           />
         </div>
-        <div className=" relative h-screen sm:h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px]">
+        <div className=" bannerDiv">
           <Image
             className=""
-            src="/bannerjapan.jpg"
+            src="/banner6.jpg"
+            alt=""
+            fill
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+        <div className=" bannerDiv">
+          <Image
+            className=""
+            src="/banner7.jpg"
             alt=""
             fill
             style={{ objectFit: "cover" }}

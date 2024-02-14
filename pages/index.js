@@ -1,5 +1,4 @@
 import Head from "next/head";
-
 import Header from "@/components/Header";
 import Banner from "@/components/Banner";
 import { getExploreNearby } from "@/lib/getExploreNearby";

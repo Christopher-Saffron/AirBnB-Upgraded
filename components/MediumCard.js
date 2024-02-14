@@ -15,6 +15,7 @@ function MediumCard({ img, title, searchWithTag }) {
           alt=""
           fill
           className="rounded-lg"
+          sizes="300px"
           style={{ objectFit: "cover" }}
         />
       </div>
