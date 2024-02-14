@@ -2,6 +2,8 @@
 # Hello there!
 ## Airbnb replica
 
+# Just noticed GOOGLE API has done some changes, working on fixing the login functionality. (thanks uncle Google for doing it again)
+
  Seems like this type of business is the exact perfect to utilize a majority of tools I can use. 
  
  The primary focus was on functionality, rather than looks and design. ( I was not familiar with FIGMA at the time of development)
