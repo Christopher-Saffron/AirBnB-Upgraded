@@ -1,12 +1,11 @@
-import Image from "next/image";
-import React, { useState, useEffect } from "react";
 import { GlobeAltIcon, SearchIcon } from "@heroicons/react/outline";
 import { UsersIcon } from "@heroicons/react/solid";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
-import { useRouter } from "next/router";
-import { useSession } from "next-auth/react";
 import HeaderMenu from "./HeaderMenu";
 
 function Header({ placeholder }) {

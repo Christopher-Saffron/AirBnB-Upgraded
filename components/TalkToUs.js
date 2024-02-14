@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
-import { PaperAirplaneIcon, chat } from "@heroicons/react/solid";
+import { PaperAirplaneIcon } from "@heroicons/react/solid";
+import { useEffect, useRef, useState } from "react";
 
 function TalkToUs() {
   const [isWindowOpen, toggleWindow] = useState(false);

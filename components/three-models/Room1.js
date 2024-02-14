@@ -1,6 +1,5 @@
-import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
-import { MeshMatcapMaterial, DoubleSide } from "three";
+import { DoubleSide, MeshMatcapMaterial } from "three";
 
 export default function Model(props) {
   const { nodes, materials } = useGLTF("/models/room1.glb");
