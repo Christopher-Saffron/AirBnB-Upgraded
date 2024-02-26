@@ -3,8 +3,8 @@ import Header from "@/components/Header.tsx";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
-import { getSearchResults } from "@/lib/getSearchResults";
-import InfoCard from "@/components/InfoCard";
+import { getSearchResults } from "@/lib/getSearchResults.tsx";
+import InfoCard from "@/components/InfoCard.tsx";
 import MapComponent from "@/components/Map";
 
 function Search({ searchResults }) {

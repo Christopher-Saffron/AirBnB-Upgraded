@@ -32,7 +32,6 @@ function TalkToUs() {
 
   const addMessage = () => {
     if (!inputRef.current.value) {
-      console.log("apparently empty");
       return;
     }
 
@@ -44,10 +43,7 @@ function TalkToUs() {
 
   const sendMessageWithEnter = (e) => {
     if (e.key === "Enter") {
-      console.log("ding");
-      console.log(isFocused);
       if (isFocused) {
-        console.log("dinggg");
         addMessage();
       }
       // addMessage();

@@ -1,7 +1,13 @@
 import Image from "next/image";
 import React from "react";
 
-function MediumCard({ img, title, searchWithTag }) {
+type MediumCardProps = {
+  img: string;
+  title: string;
+  searchWithTag: Function;
+};
+
+function MediumCard({ img, title, searchWithTag }: MediumCardProps) {
   return (
     <div
       className="cursor-pointer hover:scale-105 transform transition duration-300 ease-out"

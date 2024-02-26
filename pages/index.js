@@ -1,10 +1,10 @@
 import Banner from "@/components/Banner.tsx";
 import Header from "@/components/Header.tsx";
-import LargeCard from "@/components/LargeCard";
-import MediumCard from "@/components/MediumCard";
-import SmallCard from "@/components/SmallCard";
-import { getCardsData } from "@/lib/getCardsData";
-import { getExploreNearby } from "@/lib/getExploreNearby";
+import LargeCard from "@/components/LargeCard.tsx";
+import MediumCard from "@/components/MediumCard.tsx";
+import SmallCard from "@/components/SmallCard.tsx";
+import { getCardsData } from "@/lib/getCardsData.tsx";
+import { getExploreNearby } from "@/lib/getExploreNearby.tsx";
 import Head from "next/head";
 import { useRouter } from "next/router";
 

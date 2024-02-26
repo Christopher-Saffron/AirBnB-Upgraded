@@ -1,7 +1,10 @@
 import Header from "@/components/Header";
-import HistoryItem from "@/components/HistoryItem";
+import HistoryItem from "@/components/HistoryItem.tsx";
 import dbConnect from "@/lib/dbConnect";
 import Account from "@/models/Account";
+
+/////DON'T REMOVE, IT CAUSES ERRORS ON PAGES NOT YET GENERATED THAT USE IT, FOR SOME REASON
+import Travel from "@/models/Travel";
 import { getSession } from "next-auth/react";
 import React from "react";
 

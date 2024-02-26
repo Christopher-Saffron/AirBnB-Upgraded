@@ -21,5 +21,14 @@ const TravelSchema = new mongoose.Schema({
   },
 });
 
+export interface Travel {
+  fullPrice: number;
+  dateStart: Date;
+  dateEnd: Date;
+  placeName: string;
+  placeHost: string;
+  img: string;
+}
+
 export default mongoose.models?.Travel ||
   mongoose.model("Travel", TravelSchema);

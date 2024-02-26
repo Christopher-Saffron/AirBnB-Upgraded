@@ -136,7 +136,7 @@ export const SEARCH_RESULTS = [
   },
 ];
 
-export async function getSearchResults(idOnly) {
+export async function getSearchResults(idOnly: string) {
   if (idOnly) {
     const slugs = SEARCH_RESULTS.map((item) => {
       return { params: { id: item.id } };
@@ -148,6 +148,22 @@ export async function getSearchResults(idOnly) {
   return SEARCH_RESULTS;
 }
 
-export async function getSearchResult(num) {
+export type SearchResult = {
+  img: string;
+  location: string;
+  title: string;
+  description: string;
+  star: string;
+  price: string;
+  lat: string;
+  long: string;
+  tags: String[];
+  id: string;
+  reviews: number;
+  google: string;
+  room: string;
+};
+
+export async function getSearchResult(num: number) {
   return SEARCH_RESULTS[num];
 }

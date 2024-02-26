@@ -5,6 +5,17 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
+type InfoCardProps = {
+  img: string;
+  location: string;
+  title: string;
+  description: string;
+  star: string;
+  price: string;
+  id: string;
+  tags: Array<string>[];
+};
+
 function InfoCard({
   img,
   location,
@@ -14,14 +25,14 @@ function InfoCard({
   price,
   id,
   tags,
-}) {
+}: InfoCardProps) {
   const router = useRouter();
   const [liked, toggleLiked] = useState(false);
 
   useEffect(() => {
     if (sessionStorage.getItem("likedPlaces")) {
-      const arr = sessionStorage.getItem("likedPlaces").split(",");
-      if (arr.includes(id)) {
+      const arr = sessionStorage.getItem("likedPlaces")?.split(",");
+      if (arr?.includes(id)) {
         toggleLiked(true);
         console.log("includes");
       }

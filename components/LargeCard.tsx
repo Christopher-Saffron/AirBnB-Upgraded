@@ -1,7 +1,14 @@
 import Image from "next/image";
 import React from "react";
 
-function LargeCard({ img, title, description, buttonText }) {
+type LargeCardProps = {
+  img: string;
+  title: string;
+  description: string;
+  buttonText: string;
+};
+
+function LargeCard({ img, title, description, buttonText }: LargeCardProps) {
   return (
     <section className="relative py-16 cursor-pointer">
       <div className="relative h-96 min-w-[300px]">

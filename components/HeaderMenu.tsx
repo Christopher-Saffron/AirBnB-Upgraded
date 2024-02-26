@@ -36,7 +36,7 @@ function HeaderMenu() {
             <Image
               width={30}
               height={30}
-              src={session.user.image}
+              src={session?.user?.image || ""}
               alt=""
               className="object-fit rounded-full"
             />

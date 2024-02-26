@@ -2,7 +2,14 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 
-function SmallCard({ img, id, location, distance }) {
+type SmallCardProps = {
+  img: string;
+  id: string;
+  location: string;
+  distance: string;
+};
+
+function SmallCard({ img, id, location, distance }: SmallCardProps) {
   const router = useRouter();
   return (
     <div

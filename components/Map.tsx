@@ -4,8 +4,9 @@ import { getCenter } from "geolib";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Link from "next/link";
 import Image from "next/image";
+import { SearchResult } from "@/lib/getSearchResults";
 
-function MapComponent({ searchResults }) {
+function MapComponent({ searchResults }: { searchResults: SearchResult }) {
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [viewport, setViewport] = useState({
     latitude: 35.6331002,
