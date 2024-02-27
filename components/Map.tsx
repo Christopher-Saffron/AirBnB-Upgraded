@@ -6,8 +6,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { SearchResult } from "@/lib/getSearchResults";
 
-function MapComponent({ searchResults }: { searchResults: SearchResult }) {
-  const [selectedLocation, setSelectedLocation] = useState(null);
+function MapComponent({ searchResults }: { searchResults: [SearchResult] }) {
+  const [selectedLocation, setSelectedLocation] =
+    useState<SearchResult | null>();
   const [viewport, setViewport] = useState({
     latitude: 35.6331002,
     longitude: 139.6699255,
@@ -15,15 +16,11 @@ function MapComponent({ searchResults }: { searchResults: SearchResult }) {
   });
 
   useEffect(() => {
-    console.log(selectedLocation);
-  }, [selectedLocation]);
-
-  useEffect(() => {
-    const coordinates = searchResults.map((result) => ({
+    const coordinates = searchResults.map((result: SearchResult) => ({
       longitude: result.long,
       latitude: result.lat,
     }));
-    const center = getCenter(coordinates);
+    const center: any = getCenter(coordinates);
     setViewport((prevState) => ({
       ...prevState,
       latitude: center.latitude,
@@ -39,11 +36,15 @@ function MapComponent({ searchResults }: { searchResults: SearchResult }) {
       mapStyle="mapbox://styles/mapbox/streets-v9"
     >
       {searchResults.map((result, index) => (
-        <Marker key={index} latitude={result.lat} longitude={result.long}>
+        <Marker
+          key={index}
+          latitude={Number(result.lat)}
+          longitude={Number(result.long)}
+        >
           <button
             onClick={(e) => {
               e.stopPropagation();
-              setSelectedLocation(result);
+              setSelectedLocation(result as any);
             }}
           >
             <p className="cursor-pointer animate-bounce text-2xl">📌</p>
