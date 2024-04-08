@@ -38,7 +38,6 @@ function Place({ result }) {
                 </div>
                 <div className="bg-black h-1 w-1 rounded-full mx-3" />
                 <div className="flex items-center italic underline">
-                  {/* {Math.floor(Math.random() * 1000)} reviews */}
                   {result.reviews} reviews
                 </div>
                 <div className="bg-black h-1 w-1 rounded-full mx-3 hidden md:block" />
@@ -102,6 +101,7 @@ function Place({ result }) {
           />
 
           <LocationMap coords={{ lat: result.lat, long: result.long }} />
+          <hr />
           <NoSsr>
             <LoadModel modelName={result.room} />
           </NoSsr>
@@ -127,7 +127,7 @@ export const getStaticProps = async ({ params }) => {
   const randomRowTags = [];
   const randomColsTags = [];
   while (randomRowTags.length < 3) {
-    const randomNum = Math.floor(Math.random() * 8); // we have 8 random tags
+    const randomNum = Math.floor(Math.random() * 8); // we have 8 random tags to choose from
     if (!randomNumberTags.includes(randomNum)) {
       randomNumberTags.push(randomNum);
       randomRowTags.push(randomNum);
@@ -135,7 +135,7 @@ export const getStaticProps = async ({ params }) => {
   }
 
   while (randomColsTags.length < 3) {
-    const randomNum = Math.floor(Math.random() * 8); // we have 8 random tags
+    const randomNum = Math.floor(Math.random() * 8); // we have 8 random tags to choose from
     if (!randomNumberTags.includes(randomNum)) {
       randomNumberTags.push(randomNum);
       randomColsTags.push(randomNum);

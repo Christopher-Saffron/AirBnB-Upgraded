@@ -14,16 +14,12 @@ const LoadModel = ({ modelName }) => {
   const [loading, setLoading] = useState(true);
   const [renderer, setRenderer] = useState();
   const [_camera, setCamera] = useState();
-  // const [target] = useState(new THREE.Vector3(15, -10, 0));
-  const [target] = useState(new THREE.Vector3(50, 5, 0));
+  const [target] = useState(new THREE.Vector3(0, -25, 0));
   const [initialCameraPosition] = useState(
     new THREE.Vector3(
-      // 20 * Math.sin(0.2 * Math.PI),
-      // 10,
-      // 20 * Math.cos(0.2 * Math.PI)
-      0,
-      20,
-      10
+      20 * Math.sin(0.2 * Math.PI),
+      10,
+      20 * Math.cos(0.2 * Math.PI)
     )
   );
   const [scene] = useState(new THREE.Scene());
@@ -68,15 +64,19 @@ const LoadModel = ({ modelName }) => {
       camera.lookAt(target);
       setCamera(camera);
 
-      const ambientLight = new THREE.AmbientLight("#f00", 0.5);
-      scene.add(ambientLight);
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+      directionalLight.position.set(15, 15, 15);
+
+      const directionalLight2 = new THREE.DirectionalLight(0xffffff, 2);
+      directionalLight2.position.set(-15, -15, -15);
+      scene.add(directionalLight);
+      scene.add(directionalLight2);
 
       const controls = new OrbitControls(camera, renderer.domElement);
       controls.autoRotate = true;
       controls.target = target;
       setControls(controls);
 
-      //   loadGLTFModel(scene, "/models/NEW-PLANETS.glb", {
       loadGLTFModel(scene, modelName, {
         receiveShadow: true,
         castShadow: true,
@@ -89,24 +89,23 @@ const LoadModel = ({ modelName }) => {
       let req = null;
       let frame = 0;
       const animate = () => {
-        //   renderer.render(scene, camera);
         req = requestAnimationFrame(animate);
 
-        // frame = frame <= 100 ? frame + 1 : frame;
+        frame = frame <= 100 ? frame + 1 : frame;
 
-        // if (frame <= 100) {
-        //   const p = initialCameraPosition;
-        //   const rotSpeed = -easeOutCirc(frame / 120) * Math.PI * 0.5;
+        if (frame <= 100) {
+          const p = initialCameraPosition;
+          const rotSpeed = -easeOutCirc(frame / 120) * Math.PI * 0.5;
 
-        //   // camera.position.y = 20;
-        //   // camera.position.x =
-        //   //   p.x * Math.cos(rotSpeed) + p.z * Math.sin(rotSpeed);
-        //   // camera.position.z =
-        //   //   p.z * Math.cos(rotSpeed) - p.x * Math.sin(rotSpeed);
-        //   // camera.lookAt(target);
-        // } else {
-        //   // controls.update();
-        // }
+          camera.position.y = 0;
+          camera.position.x =
+            p.x * Math.cos(rotSpeed) + p.z * Math.sin(rotSpeed);
+          camera.position.z =
+            p.z * Math.cos(rotSpeed) - p.x * Math.sin(rotSpeed);
+          camera.lookAt(target);
+        } else {
+          controls.update();
+        }
 
         renderer.render(scene, camera);
       };
@@ -126,10 +125,15 @@ const LoadModel = ({ modelName }) => {
   }, [renderer, handleWindowResize]);
 
   return (
-    <div
-      ref={refContainer}
-      className=" border border-red-500 relative mx-auto mt-5 lg:w-[900px] h-[600px] md:h-[900px] lg:h-[600px]  items-center justify-center flex overflow-hidden"
-    ></div>
+    <>
+      <p className="text-xl font-semibold py-5 px-3 text-gray-700">
+        Your room will look like this:
+      </p>
+      <div
+        ref={refContainer}
+        className="  relative mx-auto mt-5 lg:w-[900px] h-[300px] md:h-[500px] lg:h-[500px]  items-center justify-center flex overflow-hidden "
+      ></div>
+    </>
   );
 };
 

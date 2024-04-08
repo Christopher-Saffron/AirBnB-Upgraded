@@ -1,8 +1,8 @@
-import { GlobeAltIcon, SearchIcon } from "@heroicons/react/outline";
+import { SearchIcon } from "@heroicons/react/outline";
 import { UsersIcon } from "@heroicons/react/solid";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
@@ -15,24 +15,24 @@ function Header({ placeholder }) {
   const [guestNumber, setGuestNumber] = useState(1);
   const router = useRouter();
 
-  const searchWithEnter = (e) => {
-    if (e.key !== "Enter" || !searchInput) return;
+  // const searchWithEnter = (e) => {
+  //   if (e.key !== "Enter" || !searchInput) return;
 
-    router.push({
-      pathname: "/search",
-      query: {
-        location: searchInput,
-        startDate: startDate.toISOString(),
-        endDate: endDate.toISOString(),
-        guestNumber,
-      },
-    });
-  };
+  //   router.push({
+  //     pathname: "/search",
+  //     query: {
+  //       location: searchInput,
+  //       startDate: startDate.toISOString(),
+  //       endDate: endDate.toISOString(),
+  //       guestNumber,
+  //     },
+  //   });
+  // };
 
-  useEffect(() => {
-    window.addEventListener("keydown", searchWithEnter);
-    return () => window.removeEventListener("keydown", searchWithEnter);
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener("keydown", searchWithEnter);
+  //   return () => window.removeEventListener("keydown", searchWithEnter);
+  // }, []);
 
   const selectionRange = {
     startDate: startDate,
@@ -46,7 +46,8 @@ function Header({ placeholder }) {
   }
 
   const search = () => {
-    if (!searchInput) return;
+    console.log(searchInput);
+    // if (!searchInput) return;
     router.push({
       pathname: "/search",
       query: {
@@ -56,7 +57,9 @@ function Header({ placeholder }) {
         guestNumber,
       },
     });
-    if (router.pathname === "/search") router.reload(window.location.pathname);
+    setSearchInput("");
+    // router.reload();
+    // if (router.pathname === "/search") router.reload(window.location.pathname);
   };
 
   const resetInput = (e) => {
@@ -80,12 +83,12 @@ function Header({ placeholder }) {
           />
         </div>
 
-        <div className="flex items-center md:border-2 rounded-full py-2 md:shadow-sm">
+        <div className="flex overflow-hidden items-center md:border-2 rounded-full py-2 md:shadow-sm min-w-[0px] md:min-w-[250px]">
           <input
             onChange={(e) => {
               setSearchInput(e.target.value);
             }}
-            placeholder={placeholder || "Start your search"}
+            placeholder={placeholder || "Search"}
             value={searchInput}
             className=" flex-grow pl-5 bg-transparent outline-none text-sm text-gray-500 placeholder-gray-400"
             type="text"
@@ -98,7 +101,7 @@ function Header({ placeholder }) {
           />
         </div>
 
-        <div className="flex space-x-4 items-center justify-end text-gray-500">
+        <div className="flex items-center justify-end text-gray-500">
           {/* <p className="hidden lg:inline-block cursor-pointer">Become a host</p>
           <GlobeAltIcon className="h-6 cursor-pointer" /> */}
 

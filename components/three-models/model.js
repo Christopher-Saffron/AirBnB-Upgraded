@@ -22,22 +22,20 @@ export function loadGLTFModel(
         const obj = gltf.scene;
 
         obj.name = modelName;
-        obj.position.y = 150;
-        obj.position.x = 25;
+        obj.position.y = -50;
+        obj.position.x = 0;
         obj.position.z = 0;
-        obj.scale.x = 10;
-        // obj.add(basicMaterial);
-        // obj.mes;
-        obj.scale.y = 10;
-        obj.scale.z = 5;
-        obj.receiveShadow = false;
-        obj.castShadow = false;
+        obj.scale.x = 15;
+        obj.scale.y = 15;
+        obj.scale.z = 15;
+        obj.receiveShadow = receiveShadow;
+        obj.castShadow = castShadow;
         scene.add(obj);
 
         obj.traverse(function (child) {
           if (child.isMesh) {
-            child.castShadow = false;
-            child.receiveShadow = false;
+            child.castShadow = receiveShadow;
+            child.receiveShadow = castShadow;
           }
         });
 

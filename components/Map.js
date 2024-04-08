@@ -14,10 +14,6 @@ function MapComponent({ searchResults }) {
   });
 
   useEffect(() => {
-    console.log(selectedLocation);
-  }, [selectedLocation]);
-
-  useEffect(() => {
     const coordinates = searchResults.map((result) => ({
       longitude: result.long,
       latitude: result.lat,

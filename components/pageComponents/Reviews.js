@@ -2,6 +2,15 @@ import React from "react";
 import { StarIcon } from "@heroicons/react/solid";
 import Image from "next/image";
 
+const CATEGORIES = [
+  { category: "Cleanliness", value: 3.6 },
+  { category: "Accuracy", value: 5.0 },
+  { category: "Communication", value: 4.5 },
+  { category: "Location", value: 3.9 },
+  { category: "Check-in", value: 4.8 },
+  { category: "Value", value: 4.1 },
+];
+
 function Reviews({ star, reviews, commentsArray }) {
   return (
     <div className="pt-3 px-5 mt-6 border-t border-gray-300">
@@ -15,7 +24,21 @@ function Reviews({ star, reviews, commentsArray }) {
       </div>
 
       <div className="grid mt-3 grid-cols-1 md:grid-cols-2 sm:px-3 md:px-0 gap-y-3 gap-x-12 text-sm">
-        <div className="flex justify-between">
+        {CATEGORIES.map((item) => (
+          <div className="flex justify-between" key={item.category}>
+            <p className="min-w-[120px]">{item.category}</p>
+            <div className="flex gap-3 justify-end w-full items-center">
+              <div className="relative  h-2 bg-gray-300 w-full max-w-[180px] lg:max-w-[200px]">
+                <div
+                  className="bg-gray-900 absolute top-1/2 transform -translate-y-1/2 left-0 h-full"
+                  style={{ width: "85%" }}
+                />
+              </div>
+              <p className="ml-4">{item.value}</p>
+            </div>
+          </div>
+        ))}
+        {/* <div className="flex justify-between">
           <p className="min-w-[120px]">Cleanliness</p>
           <div className="flex gap-3 justify-end w-full items-center">
             <div className="relative  h-2 bg-gray-300 w-full max-w-[180px] lg:max-w-[200px]">
@@ -52,9 +75,9 @@ function Reviews({ star, reviews, commentsArray }) {
             </div>
             <p className="ml-4">5.0</p>
           </div>
-        </div>
+        </div> */}
 
-        <div className="flex justify-between">
+        {/* <div className="flex justify-between">
           <p className="min-w-[120px]">Location</p>
           <div className="flex gap-3 justify-end w-full items-center">
             <div className="relative  h-2 bg-gray-300 w-full  max-w-[180px] lg:max-w-[200px]">
@@ -65,9 +88,9 @@ function Reviews({ star, reviews, commentsArray }) {
             </div>
             <p className="ml-4">4.9</p>
           </div>
-        </div>
+        </div> */}
 
-        <div className="flex justify-between">
+        {/* <div className="flex justify-between">
           <p className="whitespace-nowrap min-w-[120px]">Check-in</p>
           <div className="flex gap-3 justify-end w-full items-center">
             <div className="relative  h-2 bg-gray-300 w-full  max-w-[180px] lg:max-w-[200px]">
@@ -78,9 +101,9 @@ function Reviews({ star, reviews, commentsArray }) {
             </div>
             <p className="ml-4">4.4</p>
           </div>
-        </div>
+        </div> */}
 
-        <div className="flex justify-between">
+        {/* <div className="flex justify-between">
           <p className="min-w-[120px]">Value</p>
           <div className="flex gap-3 justify-end w-full items-center">
             <div className="relative  h-2 bg-gray-300 w-full  max-w-[180px] lg:max-w-[200px]">
@@ -91,7 +114,7 @@ function Reviews({ star, reviews, commentsArray }) {
             </div>
             <p className="ml-4">5.0</p>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-3 my-6 h-fit">
         {commentsArray.map((user, i) => (

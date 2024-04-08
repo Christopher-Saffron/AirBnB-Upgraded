@@ -20,7 +20,6 @@ export const authOptions = {
   callbacks: {
     signIn: async (user, account, profile) => {
       await dbConnect();
-      console.log(user.user);
       const existingUser = await Account.findOne({ email: user.user.email });
       if (existingUser) {
         return Promise.resolve(true);
