@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 export default function Home({ exploreData, cardsData }) {
   const router = useRouter();
 
-  const searchWithTag = (tag) => {
+  const searchWithTag = () => {
     router.push({
       pathname: "/search",
       query: {
@@ -20,7 +20,6 @@ export default function Home({ exploreData, cardsData }) {
         startDate: new Date().toISOString(),
         endDate: new Date().toISOString(),
         guestNumber: 1,
-        tagToFilter: tag,
       },
     });
   };
@@ -75,6 +74,7 @@ export default function Home({ exploreData, cardsData }) {
           title="The Greatest Outdoors"
           description="Wishlists curated by Airbnb"
           buttonText="Get Inspired"
+          link="/search?location=&startDate=2024-04-08T09%3A03%3A04.114Z&endDate=2024-04-08T09%3A03%3A04.114Z&guestNumber=1"
         />
       </main>
 

@@ -7,6 +7,14 @@ import { getSearchResults } from "@/lib/getSearchResults";
 import InfoCard from "@/components/InfoCard";
 import MapComponent from "@/components/Map";
 
+const FILTER_TAGS = [
+  "Entire Homes",
+  "Outdoor getaways",
+  "Pet allowed",
+  "Unique homes",
+  "Hidden treasure",
+];
+
 function Search({ searchResults }) {
   const router = useRouter();
   const { location, startDate, endDate, guestNumber, tagToFilter } =
@@ -58,41 +66,16 @@ function Search({ searchResults }) {
           </h1>
 
           <div className="hidden lg:inline-flex mb-5 space-x-3 text-gray-800 whitespace-nowrap">
-            <p
-              onClick={handleFilters}
-              data-tag="Entire Homes"
-              className="button"
-            >
-              Entire Homes
-            </p>
-            <p
-              onClick={handleFilters}
-              data-tag="Outdoor getaways"
-              className="button"
-            >
-              Outdoor getaways
-            </p>
-            <p
-              onClick={handleFilters}
-              data-tag="Pet allowed"
-              className="button"
-            >
-              Pet allowed
-            </p>
-            <p
-              onClick={handleFilters}
-              data-tag="Unique homes"
-              className="button"
-            >
-              Unique homes
-            </p>
-            <p
-              onClick={handleFilters}
-              data-tag="Hidden treasure"
-              className="button"
-            >
-              Hidden treasure
-            </p>
+            {FILTER_TAGS.map((item) => (
+              <button
+                key={item}
+                onClick={handleFilters}
+                data-tag="Entire Homes"
+                className="button"
+              >
+                {item}
+              </button>
+            ))}
           </div>
 
           <div className="flex flex-col">

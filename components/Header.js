@@ -70,10 +70,10 @@ function Header({ placeholder }) {
           onClick={() => {
             router.push("/");
           }}
-          className="relative flex items-center h-10 cursor-pointer my-auto"
+          className="relative flex items-center h-16 cursor-pointer my-auto"
         >
           <Image
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png"
+            src="/NipponAirLogo.svg"
             style={{ objectPosition: "left", objectFit: "contain" }}
             fill
             alt=""
@@ -99,8 +99,8 @@ function Header({ placeholder }) {
         </div>
 
         <div className="flex space-x-4 items-center justify-end text-gray-500">
-          <p className="hidden lg:inline-block cursor-pointer">Become a host</p>
-          <GlobeAltIcon className="h-6 cursor-pointer" />
+          {/* <p className="hidden lg:inline-block cursor-pointer">Become a host</p>
+          <GlobeAltIcon className="h-6 cursor-pointer" /> */}
 
           <HeaderMenu />
         </div>
