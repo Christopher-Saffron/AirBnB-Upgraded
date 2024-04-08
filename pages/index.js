@@ -3,6 +3,7 @@ import Header from "@/components/Header.tsx";
 import LargeCard from "@/components/LargeCard.tsx";
 import MediumCard from "@/components/MediumCard.tsx";
 import SmallCard from "@/components/SmallCard.tsx";
+import Test from "@/components/Test.tsx";
 import { getCardsData } from "@/lib/getCardsData.tsx";
 import { getExploreNearby } from "@/lib/getExploreNearby.tsx";
 import Head from "next/head";
@@ -32,12 +33,14 @@ export default function Home({ exploreData, cardsData }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
+      {/* <Header /> */}
 
-      <Banner />
+      <Test />
+
+      {/* <Banner /> */}
 
       <main className="max-w-7xl mx-auto px-8 sm:px-16">
-        <section className="pt-6">
+        {/* <section className="pt-6">
           <h2 className="text-4xl font-bold pb-5">Explore Nearby</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {exploreData?.map((i, index) => (
@@ -74,7 +77,7 @@ export default function Home({ exploreData, cardsData }) {
           title="The Greatest Outdoors"
           description="Wishlists curated by Airbnb"
           buttonText="Get Inspired"
-        />
+        /> */}
       </main>
     </div>
   );

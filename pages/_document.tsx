@@ -10,7 +10,7 @@ export default function Document() {
         {/* <Header /> */}
         <Main />
         <NextScript />
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </Html>
   );
